@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "UTF-8">
+        <meta http-equiv = "X-UA-Compatible" content = "IE=edge">
+        <meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
+        
+        <title>DOM_simple_to_do_list_app</title>
+
+        <!--Bootstrap CSS Link-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <style>
+            header {
+                text-align: center;
+                margin: 20px auto;
+            }
+        </style>
+    </head>
+    <body>
+
+        <header>
+            <h1>DOM Simple To-do List App</h1>
+        </header>
+
+        <div class="container my-5">
+            <form id="addform">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="item" placeholder="Enter new items">
+                </div>
+                <button type="submit" class="btn btn-primary my-5">Submit</button>
+            </form>
+
+            <ul class="list-group list-group-flush" id="list">
+                <li class="list-group-item">Cras Justo<button class="btn btn-danger float-right">X</button></button></li>
+                <li class="list-group-item">Mustavo Gadafii<button class="btn btn-danger float-right">X</button></button></li>
+                <li class="list-group-item">Musiliu Ayande<button class="btn btn-danger float-right">X</button></button></li>
+                <li class="list-group-item">Mathew Olorunbe<button class="btn btn-danger float-right">X</button></button></li>
+                <li class="list-group-item">Miracle Ola<button class="btn btn-danger float-right">X</button></button></li>
+                <li class="list-group-item">Iyanu Ayanfe<button class="btn btn-danger float-right">X</button></button></li>
+                <li class="list-group-item">Junior Falana<button class="btn btn-danger float-right">X</button></button></li>
+
+            </ul>
+
+        </div>
+        <script>
+        var form = document.getElementById("addform");
+        var listItem = document.getElementById("list");
+
+        form.addEventListener("submit", (e)=>{
+            e.preventDefault();
+            var newItem = document.getElementById("item").value;
+            // console.log(newItem)
+            var li = document.createElement('li');
+            li.className = "list-group-item";
+            li.innerHTML = newItem;
+
+
+            var button = document.createElement('button');
+            button.className = "btn btn-danger float-right";
+            button.innerHTML = "X";
+
+            li.appendChild(button);
+            listItem.appendChild(li);
+        });
+
+
+        listItem.addEventListener('click', (e)=>{
+            // console.log(e.target);
+            if(e.target.classList.contains('btn')){
+                var li = e.target.parentElement;
+                // console.log(li);
+                listItem.removeChild(li);
+            }
+        });
+
+
+        </script>
+    </body>
+</html>
